@@ -27,13 +27,16 @@ def print_settings():
 def request_new_plane_instance ():
     print ("Attempting to connecting to server to request new plane instance...")
 
-    print (aq.get("ATC_MODEL"))
+    print (aq.get("TITLE"))
     print (aq.get("ATC_ID"))
-    print (aq.get("ATC_AIRLINE"))
-    print (aq.get("ATC_FLIGHT_NUMBER"))
+
+    data_to_send = {
+        'title': aq.get("TITLE"),
+        'atc_id': aq.get("ATC_ID"),
+    }
 
     try:
-        new_plane_request = requests.get(website_address + "/api/create_new_plane")
+        new_plane_request = requests.post(website_address + "/api/create_new_plane", json=data_to_send)
     except requests.exceptions.RequestException as e:
         print ("... connection failed")
         return "error"
