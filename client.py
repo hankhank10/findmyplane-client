@@ -27,6 +27,8 @@ def print_settings():
 def request_new_plane_instance ():
     print ("Attempting to connecting to server to request new plane instance...")
 
+    print(aq.get("TITLE"))
+
     try:
         new_plane_request = requests.get(website_address + "/api/create_new_plane")
     except requests.exceptions.RequestException as e:
