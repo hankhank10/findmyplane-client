@@ -1,7 +1,7 @@
 import requests
 import time
-import random  #only need this for testing
 from SimConnect import *
+
 
 def print_art():
     print()
@@ -15,12 +15,14 @@ def print_art():
     print("                             |___/                                           ")
     print()
 
+
 def print_settings():
     print ("# SETTINGS:")
     print ("Server address is", website_address)
     print ("Delay after failed new plane request is", str(delay_after_failed_new_plane_request), "seconds")
     print ("Delay between updates is", str(delay_between_updates), "seconds")
     print ()
+
 
 def request_new_plane_instance ():
     print ("Attempting to connecting to server to request new plane instance...")
@@ -92,15 +94,13 @@ def update_location():
     return "ok"
 
 
-
-
 # Settings
 website_address = "https://findmyplane.live"
 delay_after_failed_new_plane_request = 3
 delay_between_updates = 1
-test_mode = True  #testing only
+test_mode = False  #testing only
 verbose = False
-version = "Alpha 0.1"
+version = "Alpha 0.2"
 
 datapoints_sent = 0
 server_errors_logged = 0
