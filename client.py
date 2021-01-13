@@ -50,7 +50,8 @@ def update_location():
 
     error_this_time = False
     global datapoints_sent
-    global errors_received
+    global server_errors_logged
+    global sim_errors_logged
 
     # Get data from sim
     try:
@@ -60,7 +61,7 @@ def update_location():
         current_compass = aq.get("MAGNETIC_COMPASS")
     except:
         if verbose: print ("Error getting sim data")
-        errors_received = errors_received + 1
+        sim_errors_logged += 1
         error_this_time = True
 
     if not error_this_time:
@@ -79,11 +80,14 @@ def update_location():
             r = requests.post(website_address+"/api/update_plane_location", json=data_to_send)
         except:
             if verbose: print ("Error sending data")
-            errors_received = errors_received + 1
+            server_errors_logged += 1
 
-        datapoints_sent = datapoints_sent + 1
+        if r.status_code != 200:
+            server_errors_logged += 1
 
-    if not verbose: print (str(datapoints_sent) + " datapoints sent with " + str(errors_received) + " errors received", end='\r')
+        datapoints_sent += 1
+
+    if not verbose: print (str(datapoints_sent) + " datapoints sent of which " + str(server_errors_logged) + " generated server errors and " + str(sim_errors_logged) + " sim errors", end='\r')
 
     return "ok"
 
@@ -99,7 +103,8 @@ verbose = False
 version = "Alpha 0.1"
 
 datapoints_sent = 0
-errors_received = 0
+server_errors_logged = 0
+sim_errors_logged = 0
 
 print_art()
 print ("Windows client")
@@ -110,13 +115,13 @@ if verbose: print_settings()
 # Connect to sim here
 print ("# CONNECTING TO SIMULATOR")
 print ("Attempting to connect to MSFS 2020...")
-#try:
-sm = SimConnect()
-aq = AircraftRequests(sm, _time=10)
-#except:
-#    print ("... no sim found")
-#    input ("Press a key to exit...")
-#    exit()
+try:
+    sm = SimConnect()
+    aq = AircraftRequests(sm, _time=10)
+except:
+    print ("... no sim found")
+    input ("Press a key to exit...")
+    exit()
 
 print ("... connected to MSFS 2020")
 print ()
