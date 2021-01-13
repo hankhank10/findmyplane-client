@@ -91,7 +91,7 @@ def update_location():
 
 
 # Settings
-website_address = "http://51.195.171.71:8765"
+website_address = "https://findmyplane"
 delay_after_failed_new_plane_request = 3
 delay_between_updates = 1
 test_mode = True  #testing only
