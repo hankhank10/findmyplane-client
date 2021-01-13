@@ -25,10 +25,7 @@ def print_settings():
 
 
 def request_new_plane_instance ():
-    print ("Attempting to connecting to server to request new plane instance...")
-
-    print (aq.get("TITLE").decode("utf-8"))
-    print (aq.get("ATC_ID").decode("utf-8"))
+    print ("Attempting to connect to server to request new plane instance...")
 
     data_to_send = {
         'title': aq.get("TITLE").decode("utf-8"),
@@ -42,15 +39,15 @@ def request_new_plane_instance ():
         return "error"
 
     if new_plane_request.status_code == 200:
-        print("Connected to server")
+        print("... new plane instance created ...")
     else:
         print ("... error code received from server")
         return "error"
 
     received_data = (new_plane_request.json())
 
-    print ("Public key: ", received_data['ident_public_key'])
-    if verbose: print ("Received private key", received_data['ident_private_key'])
+    print ("... with public key", received_data['ident_public_key'])
+    if verbose: print ("... and private key", received_data['ident_private_key'])
     print ()
 
     return received_data
