@@ -110,13 +110,13 @@ if verbose: print_settings()
 # Connect to sim here
 print ("# CONNECTING TO SIMULATOR")
 print ("Attempting to connect to MSFS 2020...")
-try:
-    sm = SimConnect()
-    aq = AircraftRequests(sm, _time=10)
-except:
-    print ("... no sim found")
-    input ("Press a key to exit...")
-    exit()
+#try:
+sm = SimConnect()
+aq = AircraftRequests(sm, _time=10)
+#except:
+#    print ("... no sim found")
+#    input ("Press a key to exit...")
+#    exit()
 
 print ("... connected to MSFS 2020")
 print ()
