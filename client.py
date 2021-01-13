@@ -91,7 +91,7 @@ def update_location():
 
 
 # Settings
-website_address = "https://findmyplane"
+website_address = "https://findmyplane.live"
 delay_after_failed_new_plane_request = 3
 delay_between_updates = 1
 test_mode = True  #testing only
@@ -105,7 +105,7 @@ print_art()
 print ("Windows client")
 print ("Version", version)
 print ()
-print_settings()
+if verbose: print_settings()
 
 # Connect to sim here
 print ("# CONNECTING TO SIMULATOR")
