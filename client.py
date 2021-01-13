@@ -115,6 +115,7 @@ try:
     aq = AircraftRequests(sm, _time=10)
 except:
     print ("... no sim found")
+    input ("Press a key to exit...")
     exit()
 
 print ("... connected to MSFS 2020")
