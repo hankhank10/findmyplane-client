@@ -64,7 +64,7 @@ def update_location():
     try:
         current_latitude = aq.get("PLANE_LATITUDE")
         current_longitude = aq.get("PLANE_LONGITUDE")
-        current_altitude = aq.get("ALTITUDE")
+        current_altitude = aq.get("PLANE_ALTITUDE")
         current_compass = aq.get("MAGNETIC_COMPASS")
     except:
         if verbose: print ("Error getting sim data")
