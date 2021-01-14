@@ -80,8 +80,6 @@ def update_location():
             'current_compass': current_compass,
             'current_altitude': current_altitude
         }
-
-        print (str(current_altitude))
         
         if verbose: print ("Sending ", data_to_send)
         
