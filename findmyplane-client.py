@@ -103,9 +103,8 @@ def update_location():
 website_address = "https://findmyplane.live"
 delay_after_failed_new_plane_request = 3
 delay_between_updates = 1
-test_mode = False  #testing only
 verbose = False
-version = "Alpha 0.3"
+version = "Alpha 0.4"
 
 datapoints_sent = 0
 server_errors_logged = 0
@@ -119,32 +118,31 @@ if verbose: print_settings()
 
 # Connect to sim here
 print ("# CONNECTING TO SIMULATOR")
-print ("Attempting to connect to MSFS 2020...")
-try:
-    sm = SimConnect()
-    aq = AircraftRequests(sm, _time=10)
-except:
-    print ("... no sim found")
-    input ("Press a key to exit...")
-    exit()
+print ("Attempting to connect to MSFS 2020...", end="")
 
-print ("... connected to MSFS 2020")
+connected_to_sim = False
+while connected_to_sim == False:
+    try:
+        sm = SimConnect()
+        aq = AircraftRequests(sm, _time=10)
+    except:
+        print (".")
+
+    connected_to_sim = True
+
+print ("")
+print ("Connected to MSFS 2020!")
 print ()
 
 # Request new plane instance from the server
-if test_mode:
-    print("# CONNECTING TO SERVER IN TEST MODE")
-    ident_public_key = "QDSDX"
-    ident_private_key = "LfN_uXQMtJCAThKY5ZkfJn_V8Dw"
-else:
-    print("# CONNECTING TO SERVER")
-    received_plane_details = "error"
-    while received_plane_details == "error":
-        received_plane_details = request_new_plane_instance()
-        if received_plane_details == "error": time.sleep(delay_after_failed_new_plane_request)
+print("# CONNECTING TO SERVER")
+received_plane_details = "error"
+while received_plane_details == "error":
+    received_plane_details = request_new_plane_instance()
+    if received_plane_details == "error": time.sleep(delay_after_failed_new_plane_request)
 
-    ident_public_key = received_plane_details['ident_public_key']
-    ident_private_key = received_plane_details['ident_private_key']
+ident_public_key = received_plane_details['ident_public_key']
+ident_private_key = received_plane_details['ident_private_key']
 
 print ("Connected to server at", website_address)
 print ("Find your plane at:", website_address + "/view/" + ident_public_key)
@@ -159,5 +157,3 @@ try:
         time.sleep(delay_between_updates)
 except KeyboardInterrupt:
     quit()
-
-
