@@ -105,7 +105,7 @@ delay_after_failed_new_plane_request = 3
 delay_between_updates = 1
 test_mode = False  #testing only
 verbose = False
-version = "Alpha 0.2"
+version = "Alpha 0.3"
 
 datapoints_sent = 0
 server_errors_logged = 0
