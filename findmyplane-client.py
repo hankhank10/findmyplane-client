@@ -121,14 +121,16 @@ print ("# CONNECTING TO SIMULATOR")
 print ("Attempting to connect to MSFS 2020...", end="")
 
 connected_to_sim = False
+connection_attempts = 0
 while connected_to_sim == False:
     connected_to_sim = True
     try:
         sm = SimConnect()
         aq = AircraftRequests(sm, _time=10)
     except:
-        print (".")
+        print (".", end="")
         connected_to_sim = False
+        connection_attempts = connection_attempts + 1
 
 print ("")
 print ("Connected to MSFS 2020!")
