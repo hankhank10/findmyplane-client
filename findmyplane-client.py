@@ -122,13 +122,13 @@ print ("Attempting to connect to MSFS 2020...", end="")
 
 connected_to_sim = False
 while connected_to_sim == False:
+    connected_to_sim = True
     try:
         sm = SimConnect()
         aq = AircraftRequests(sm, _time=10)
     except:
         print (".")
-
-    connected_to_sim = True
+        connected_to_sim = False
 
 print ("")
 print ("Connected to MSFS 2020!")
@@ -157,3 +157,5 @@ try:
         time.sleep(delay_between_updates)
 except KeyboardInterrupt:
     quit()
+
+
