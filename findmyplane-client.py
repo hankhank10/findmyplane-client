@@ -27,9 +27,15 @@ def print_settings():
 def request_new_plane_instance ():
     print ("Attempting to connect to server to request new plane instance...")
 
+    title = aq.get("TITLE")
+    atc_id = aq.get("ATC_ID")
+
+    if title == None or atc_id == None:
+        return "error"
+
     data_to_send = {
-        'title': aq.get("TITLE").decode("utf-8"),
-        'atc_id': aq.get("ATC_ID").decode("utf-8"),
+        'title': title.decode("utf-8"),
+        'atc_id': atc_id.decode("utf-8")
     }
 
     try:
