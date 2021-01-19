@@ -72,6 +72,8 @@ def update_location():
         current_longitude = aq.get("PLANE_LONGITUDE")
         current_altitude = aq.get("PLANE_ALTITUDE")
         current_compass = aq.get("MAGNETIC_COMPASS")
+        title = aq.get("TITLE")
+        atc_id = aq.get("ATC_ID")
     except:
         if verbose: print ("Error getting sim data")
         sim_errors_logged += 1
@@ -84,7 +86,9 @@ def update_location():
             'current_latitude': current_latitude,
             'current_longitude': current_longitude,
             'current_compass': current_compass,
-            'current_altitude': current_altitude
+            'current_altitude': current_altitude,
+            'title': title,
+            'atc_id': atc_id
         }
         
         if verbose: print ("Sending ", data_to_send)
