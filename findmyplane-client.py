@@ -124,7 +124,7 @@ if verbose: print_settings()
 
 # Connect to sim here
 print ("# CONNECTING TO SIMULATOR")
-print ("Attempting to connect to MSFS 2020...", end="")
+print ("Attempting to connect to MSFS 2020...")
 
 connected_to_sim = False
 connection_attempts = 0
