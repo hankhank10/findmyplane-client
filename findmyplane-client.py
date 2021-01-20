@@ -81,7 +81,7 @@ def update_location():
 
     try:
         title = title.decode('ascii')
-        atc_ic = atc_id.decode('ascii')
+        atc_id = atc_id.decode('ascii')
     except:
         if verbose: print ("Error converting binary to string")
         sim_errors_logged += 1
