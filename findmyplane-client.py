@@ -79,6 +79,14 @@ def update_location():
         sim_errors_logged += 1
         error_this_time = True
 
+    try:
+        title = title.decode('ascii')
+        atc_ic = atc_id.decode('ascii')
+    except:
+        if verbose: print ("Error converting binary to string")
+        sim_errors_logged += 1
+        error_this_time = True
+
     if not error_this_time:
         data_to_send = {
             'ident_public_key': ident_public_key,
