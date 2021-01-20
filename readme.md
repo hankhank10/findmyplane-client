@@ -49,6 +49,10 @@ Unsupported browsers:
 - Internet Explorer
 - Edge
 
+## Support
+
+If you are stuck then please raise an issue through [github issues](https://github.com/hankhank10/findmyplane-client/issues).
+
 ## Advanced installation and usage
 
 The source code is provided and is open source. You can download client.py and run through your Python 3 interpreter.
