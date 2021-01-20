@@ -93,11 +93,11 @@ def update_location():
         
         if verbose: print ("Sending ", data_to_send)
         
-        try:
-            r = requests.post(website_address+"/api/update_plane_location", json=data_to_send)
-        except:
-            if verbose: print ("Error sending data")
-            server_errors_logged += 1
+        #try:
+        r = requests.post(website_address+"/api/update_plane_location", json=data_to_send)
+        #except:
+        #    if verbose: print ("Error sending data")
+        #    server_errors_logged += 1
 
         #if r.status_code != 200:
         #    server_errors_logged += 1
