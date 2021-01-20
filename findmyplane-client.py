@@ -99,8 +99,8 @@ def update_location():
             if verbose: print ("Error sending data")
             server_errors_logged += 1
 
-        if r.status_code != 200:
-            server_errors_logged += 1
+        #if r.status_code != 200:
+        #    server_errors_logged += 1
 
         datapoints_sent += 1
 
