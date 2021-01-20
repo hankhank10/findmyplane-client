@@ -16,7 +16,7 @@ An executable is provided
 
 1. Load Microsoft Flight Simulator 2020
 
-2. Run *client.exe* from the findmyplane-client directory
+2. Run *findmyplane-client.exe* from the findmyplane-client directory
 
 3. Once the client has connected to your simulator and the server it will provide you with a link and five digit ident code such as ABCDE
 
