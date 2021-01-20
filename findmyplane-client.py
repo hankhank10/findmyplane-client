@@ -113,7 +113,7 @@ def update_location():
 website_address = "https://findmyplane.live"
 delay_after_failed_new_plane_request = 3
 delay_between_updates = 1
-verbose = False
+verbose = True
 version = "Alpha 0.4"
 
 datapoints_sent = 0
