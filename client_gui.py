@@ -1,6 +1,6 @@
 import requests
 import time
-#from SimConnect import *
+from SimConnect import *
 import tkinter as tk
 import webbrowser
 
