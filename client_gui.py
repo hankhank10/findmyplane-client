@@ -11,10 +11,8 @@ def browser_callback(url):
 
 def request_new_plane_instance ():
 
-    #title = aq.get("TITLE")
-    #atc_id = aq.get("ATC_ID")
-    title = b"GUI test"
-    atc_id = b"GUI test"
+    title = aq.get("TITLE")
+    atc_id = aq.get("ATC_ID")
 
     if title == None or atc_id == None:
         return "error"
@@ -154,10 +152,8 @@ connection_attempts = 0
 while not connected_to_sim:
     connected_to_sim = True
     try:
-        #sm = SimConnect()
-        #aq = AircraftRequests(sm, _time=10)
-        if connection_attempts < 1:
-            a = 1 / 0  # Designed to produce an error for testing purposes
+        sm = SimConnect()
+        aq = AircraftRequests(sm, _time=10)
     except:
         connected_to_sim = False
     connection_attempts = connection_attempts + 1
