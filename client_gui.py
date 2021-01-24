@@ -76,7 +76,7 @@ def update_location():
 
         datapoints_sent += 1
 
-    stats_label['text'] = str(datapoints_sent) + " datapoints sent of which " + str(server_errors_logged) + " generated server errors and " + str(sim_errors_logged) + " sim errors"
+    stats_label['text'] = str(datapoints_sent) + " datapoints: " + str(server_errors_logged) + " server errors and " + str(sim_errors_logged) + " sim errors"
 
     return "ok"
 
