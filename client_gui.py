@@ -89,7 +89,7 @@ def update_location():
 window = tk.Tk()
 window.title("Find My Plane")
 window.resizable(False, False)
-window.geometry("420x250")
+window.geometry("400x270")
 
 # Create labels
 server_status_label = tk.Label(
