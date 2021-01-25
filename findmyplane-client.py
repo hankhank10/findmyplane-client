@@ -90,7 +90,6 @@ window = tk.Tk()
 window.title("Find My Plane")
 window.resizable(False, False)
 window.geometry("400x270")
-window.iconbitmap('favicon.ico')
 
 # Create labels
 server_status_label = tk.Label(
