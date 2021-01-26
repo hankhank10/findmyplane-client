@@ -4,6 +4,7 @@ from SimConnect import *
 import tkinter as tk
 import webbrowser
 from tkinter import messagebox
+import sys
 
 
 def browser_callback(url):
@@ -91,7 +92,7 @@ def on_closing():
 
 def kill_the_window():
     window.destroy()
-    quit()
+    sys.exit()
 
 ###############
 # SET UP GUI
