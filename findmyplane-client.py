@@ -3,6 +3,7 @@ import time
 from SimConnect import *
 import tkinter as tk
 import webbrowser
+from tkinter import messagebox
 
 
 def browser_callback(url):
@@ -81,6 +82,11 @@ def update_location():
     return "ok"
 
 
+def on_closing():
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        window.destroy()
+
+
 ###############
 # SET UP GUI
 ###############
@@ -90,6 +96,7 @@ window = tk.Tk()
 window.title("Find My Plane")
 window.resizable(False, False)
 window.geometry("400x270")
+window.protocol("WM_DELETE_WINDOW", on_closing)
 
 # Create labels
 server_status_label = tk.Label(
