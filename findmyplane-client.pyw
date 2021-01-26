@@ -83,9 +83,15 @@ def update_location():
 
 
 def on_closing():
-    if messagebox.askokcancel("Quit", "Do you want to quit?"):
-        window.destroy()
+    global user_has_quit
 
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        user_has_quit = True
+
+
+def kill_the_window():
+    window.destroy()
+    quit()
 
 ###############
 # SET UP GUI
@@ -146,6 +152,8 @@ datapoints_sent = 0
 server_errors_logged = 0
 sim_errors_logged = 0
 
+user_has_quit = False
+
 
 ###############
 # CONNECT TO SIM
@@ -165,9 +173,12 @@ while not connected_to_sim:
         connected_to_sim = False
     connection_attempts = connection_attempts + 1
 
-    sim_status_label['text'] = 'Waiting to connect to sim: ' + str(connection_attempts) + ' attempts'
-    time.sleep(1)
-    window.update()
+    if user_has_quit:
+        kill_the_window()
+    else:
+        sim_status_label['text'] = 'Waiting to connect to sim: ' + str(connection_attempts) + ' attempts'
+        time.sleep(1)
+        window.update()
 
 sim_status_label['text'] = 'Connected to sim'
 sim_status_label['fg'] = 'green'
@@ -178,12 +189,15 @@ sim_status_label['fg'] = 'green'
 
 received_plane_details = "error"
 while received_plane_details == "error":
-    received_plane_details = request_new_plane_instance()
-    if received_plane_details == "error":
-        server_status_label['text'] = 'Trying to connect to server'
-        time.sleep(1)
-        window.update()
-        time.sleep(delay_after_failed_new_plane_request)
+    if user_has_quit:
+        kill_the_window()
+    else:
+        received_plane_details = request_new_plane_instance()
+        if received_plane_details == "error":
+            server_status_label['text'] = 'Trying to connect to server'
+            time.sleep(1)
+            window.update()
+            time.sleep(delay_after_failed_new_plane_request)
 
 ident_public_key = received_plane_details['ident_public_key']
 ident_private_key = received_plane_details['ident_private_key']
@@ -202,7 +216,7 @@ link_label.bind("<Button-1>", lambda e: browser_callback("https://findmyplane.li
 # MAIN LOOP
 ###############
 
-while True:
+while not user_has_quit:
     update_location()
     window.update_idletasks()
     window.update()
