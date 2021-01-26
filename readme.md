@@ -6,17 +6,17 @@ This is what you need to download and run on the computer running the simulator.
 
 ## Installation (easy version)
 
-An executable is provided
+Download the Windows installer:
 
-1. Download from https://findmyplane.live/download/findmyplane-client.zip or from the releases section on github
+1. Download from https://findmyplane.live/download/findmyplane-setup.exe or from the releases section on github
 
-2. Unzip the file to a location of your choice
+2. Double click to install
 
 ## Usage (easy version)
 
 1. Load Microsoft Flight Simulator 2020
 
-2. Run *findmyplane-client.exe* from the findmyplane-client directory
+2. Run *findmyplane-client.exe* from the findmyplane-client directory in Program Files (it will also be in your start menu)
 
 3. Once the client has connected to your simulator and the server it will provide you with a link and five digit ident code such as ABCDE
 
@@ -55,7 +55,9 @@ If you are stuck then please raise an issue through [github issues](https://gith
 
 ## Advanced installation and usage
 
-The source code is provided and is open source. You can download client.py and run through your Python 3 interpreter.
+If you don't want to use the installer you can just download the executable from [here](https://findmyplane.live/download/findmyplane-client.exe) or GitHub releases. It can run from wherever you want, doesn't need to be in the MSFS folder or anywhere else specific.
+
+The source code is also provided and is open source. You can download findmyplane-client.py and run through your Python 3 interpreter.
 
 Required pip libraries:
 - [requests](https://pypi.org/project/requests/)
