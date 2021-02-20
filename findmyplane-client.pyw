@@ -56,6 +56,7 @@ def update_location():
         no_smoking_sign = aq.get("CABIN_NO_SMOKING_ALERT_SWITCH")
         gear_handle_position = aq.get("GEAR_HANDLE_POSITION")
         canopy_open = aq.get("CANOPY_OPEN")
+        parking_brake = aq.get("BRAKE_PARKING_INDICATOR")
     except:
         sim_errors_logged += 1
         error_this_time = True
@@ -81,7 +82,8 @@ def update_location():
             'seatbelt_sign': seatbelt_sign,
             'no_smoking_sign': no_smoking_sign,
             'gear_handle_position': gear_handle_position,
-            'door_status': canopy_open
+            'door_status': canopy_open,
+            'parking_brake': parking_brake
         }
 
         r = requests.post(website_address + "/api/update_plane_location", json=data_to_send)
