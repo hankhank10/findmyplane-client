@@ -51,6 +51,11 @@ def update_location():
         current_compass = aq.get("MAGNETIC_COMPASS")
         title = aq.get("TITLE")
         atc_id = aq.get("ATC_ID")
+        on_ground = aq.get("SIM_ON_GROUND")
+        seatbelt_sign = aq.get("CABIN_SEATBELTS_ALERT_SWITCH")
+        no_smoking_sign = aq.get("CABIN_NO_SMOKING_ALERT_SWITCH")
+        gear_handle_position = aq.get("GEAR_HANDLE_POSITION")
+        canopy_open = aq.get("CANOPY_OPEN")
     except:
         sim_errors_logged += 1
         error_this_time = True
@@ -71,7 +76,12 @@ def update_location():
             'current_compass': current_compass,
             'current_altitude': current_altitude,
             'title': title,
-            'atc_id': atc_id
+            'atc_id': atc_id,
+            'on_ground': on_ground,
+            'seatbelt_sign': seatbelt_sign,
+            'no_smoking_sign': no_smoking_sign,
+            'gear_handle_position': gear_handle_position,
+            'door_status': canopy_open
         }
 
         r = requests.post(website_address + "/api/update_plane_location", json=data_to_send)
