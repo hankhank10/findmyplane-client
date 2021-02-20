@@ -32,7 +32,7 @@ def request_new_plane_instance ():
     if new_plane_request.status_code != 200:
         return "error"
 
-    received_data = (new_plane_request.json())
+    received_data = new_plane_request.json()
 
     return received_data
 
