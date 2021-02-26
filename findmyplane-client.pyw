@@ -86,7 +86,10 @@ def update_location():
             'parking_brake': parking_brake
         }
 
-        r = requests.post(website_address + "/api/update_plane_location", json=data_to_send)
+        try:
+            r = requests.post(website_address + "/api/update_plane_location", json=data_to_send)
+        except:
+            server_errors_logged = server_errors_logged + 1
 
         datapoints_sent += 1
 
