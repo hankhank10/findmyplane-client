@@ -6,6 +6,8 @@ import webbrowser
 from tkinter import messagebox
 import sys
 
+client_version = 2000
+
 
 def browser_callback(url):
     webbrowser.open_new(url)
@@ -21,7 +23,8 @@ def request_new_plane_instance ():
 
     data_to_send = {
         'title': title.decode("utf-8"),
-        'atc_id': atc_id.decode("utf-8")
+        'atc_id': atc_id.decode("utf-8"),
+        'client_version': client_version
     }
 
     try:
@@ -83,7 +86,8 @@ def update_location():
             'no_smoking_sign': no_smoking_sign,
             'gear_handle_position': gear_handle_position,
             'door_status': canopy_open,
-            'parking_brake': parking_brake
+            'parking_brake': parking_brake,
+            'client_version': client_version
         }
 
         try:
