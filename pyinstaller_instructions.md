@@ -1,0 +1,1 @@
+pyinstaller -F --add-binary SimConnect.dll;. client.pyw
