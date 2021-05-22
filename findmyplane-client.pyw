@@ -60,16 +60,18 @@ def update_location():
         gear_handle_position = aq.get("GEAR_HANDLE_POSITION")
         canopy_open = aq.get("CANOPY_OPEN")
         parking_brake = aq.get("BRAKE_PARKING_INDICATOR")
-    except:
+    except Exception as e:
         sim_errors_logged += 1
         error_this_time = True
+        print (str(e))
 
     try:
         title = title.decode('ascii')
         atc_id = atc_id.decode('ascii')
-    except:
+    except Exception as e:
         sim_errors_logged += 1
         error_this_time = True
+        print (str(e))
 
     if not error_this_time:
         data_to_send = {
